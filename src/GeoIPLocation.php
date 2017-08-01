@@ -55,7 +55,7 @@ class GeoIPLocation
             global $_SERVER;
             $set_localhost_ip_as = '169.159.82.111';
 
-            $ip = $_SERVER["REMOTE_ADDR"];
+            $ip = @$_SERVER["REMOTE_ADDR"];
 
             if (filter_var(@$_SERVER['HTTP_X_FORWARDED_FOR'], FILTER_VALIDATE_IP)) {
                 $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
