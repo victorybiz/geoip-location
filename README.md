@@ -20,13 +20,6 @@ Once installed you need to register the service provider with the application. O
 
 ]
 ```
-
-
-{
-    "require": {
-        "victorybiz/geoip-location": "^0.1.0"
-    }
-}
 ### PHP (Non-Laravel) Project
 Require the autoload file in your php script.
 
@@ -37,7 +30,7 @@ Require the autoload file in your php script.
  localhost IP `127.0.0.1` and `::1` will return `169.159.82.111`.
 ```php
     use Victorybiz\GeoIPLocation\GeoIPLocation;
-    
+
     $geoip = new GeoIPLocation;
 
     echo $geoip->getIP(); // Return client IP
