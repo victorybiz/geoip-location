@@ -34,8 +34,10 @@ Require the autoload file in your php script.
     require_once 'path/to/vendor/autoload.php';
 ```
 ## Usage 
-
+ localhost IP `127.0.0.1` and `::1` will return `169.159.82.111`.
 ```php
+    use Victorybiz\GeoIPLocation\GeoIPLocation;
+    
     $geoip = new GeoIPLocation;
 
     echo $geoip->getIP(); // Return client IP
