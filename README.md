@@ -32,7 +32,7 @@ Require the autoload file in your php script.
     require_once 'path/to/vendor/autoload.php';
 ```
 ## Usage 
- localhost IP `127.0.0.1` and `::1` will return `169.159.82.111`.
+ localhost IP `127.0.0.1` and `::1` will return `169.159.82.111` to assert a valid geo response.
 ```php
     use Victorybiz\GeoIPLocation\GeoIPLocation;
 
