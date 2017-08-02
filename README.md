@@ -42,7 +42,7 @@ Alternatively
 ```php
     $geoip = new \Victorybiz\GeoIPLocation\GeoIPLocation();
 ```
-
+You're good to go, explore the package
 ```php
     echo $geoip->getIP(); // Return client IP
 
