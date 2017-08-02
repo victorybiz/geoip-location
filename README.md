@@ -1,5 +1,7 @@
 # GeoIP Location
 [![Build Status](https://travis-ci.org/victorybiz/geoip-location.svg?branch=master)](https://travis-ci.org/victorybiz/geoip-location)
+[![Latest Stable Version](https://poser.pugx.org/victorybiz/geoip-locatio/v/stable.png)](https://packagist.org/packages/torann/geoip)
+[![Total Downloads](https://poser.pugx.org/victorybiz/geoip-locatio/downloads.png)](https://packagist.org/packages/torann/geoip)
 
 Get the geographical location of website visitors based on their IP addresses.
 
