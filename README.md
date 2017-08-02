@@ -1,6 +1,6 @@
 # GeoIP Location
 [![GitHub release](https://img.shields.io/github/release/victorybiz/geoip-location.svg)](https://packagist.org/packages/victorybiz/geoip-location)
-[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/victorybiz/geoip-location.svg?branch=master)](https://travis-ci.org/victorybiz/geoip-location)
 
 
