@@ -1,6 +1,6 @@
 {
     "name": "victorybiz/geoip-location",
-    "description": "Get the geographical location of website visitors based on their IP addresses.",
+    "description": "Get the geographical location of website visitors based on their IP addresses. Support Laravel 5 and PHP (Non-Laravel) Project.",
     "keywords": ["geoip","php","github","laravel","laravel 5","Open Source"],
     "type": "library",
     "license": "MIT",

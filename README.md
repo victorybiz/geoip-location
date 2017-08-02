@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/victorybiz/geoip-location.svg?branch=master)](https://travis-ci.org/victorybiz/geoip-location)
 
 
-Get the geographical location of website visitors based on their IP addresses.
+Get the geographical location of website visitors based on their IP addresses.  Support Laravel 5 and PHP (Non-Laravel) Project.
 
 ## Installation
 Install using composer, from the command line run:
