@@ -38,7 +38,10 @@ Require the autoload file in your php script.
 
     $geoip = new GeoIPLocation(); 
 ```
-Alternatively ```php $geoip = new \Victorybiz\GeoIPLocation\GeoIPLocation();```
+Alternatively
+```php
+    $geoip = new \Victorybiz\GeoIPLocation\GeoIPLocation();
+```
 
 ```php
     echo $geoip->getIP(); // Return client IP
