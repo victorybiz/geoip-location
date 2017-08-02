@@ -13,7 +13,7 @@ Install using composer, from the command line run:
 $ composer require victorybiz/geoip-location
 ```
 ### Laravel Project
-Alternatively, you can add `"victorybiz/geoip-location": "0.1.*"` to your composer.json file's `require` section and 
+Alternatively, you can add `"victorybiz/geoip-location": "~1.0"` to your composer.json file's `require` section and 
 then run `$ composer update`.
 
 Once installed you need to register the service provider with the application. Open up `config/app.php` and locate the `providers` key.
