@@ -73,7 +73,7 @@ Require the autoload file in your php script.
 
 ## Web Services
 ### geoPlugin
-GeoIP Location uses a geolocation web service from [geoPlugin](http://www.geoplugin.com/) 
+GeoIP Location wrap around geolocation web service from [geoPlugin](http://www.geoplugin.com/) 
 
 ## Bug Reports and Issue tracking 
 
