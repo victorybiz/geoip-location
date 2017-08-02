@@ -1,8 +1,10 @@
 # GeoIP Location
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/victorybiz/geoip-location.svg?style=flat-square)](https://packagist.org/packages/victorybiz/geoip-location)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://travis-ci.org/victorybiz/geoip-location.svg?branch=master)](https://travis-ci.org/victorybiz/geoip-location)
-[![Latest Stable Version](https://poser.pugx.org/victorybiz/geoip-location/v/stable.png)](https://packagist.org/packages/victorybiz/geoip-location)
-[![Total Downloads](https://poser.pugx.org/victorybiz/geoip-location/downloads.png)](https://packagist.org/packages/victorybiz/geoip-location)
-
+[![Scrutinizer Coverage](https://img.shields.io/scrutinizer/coverage/g/victorybiz/geoip-location.svg?style=flat-square)](https://scrutinizer-ci.com/g/victorybiz/geoip-location/?branch=master)
+[![Quality Score](https://img.shields.io/scrutinizer/g/victorybiz/geoip-location.svg?style=flat-square)](https://scrutinizer-ci.com/g/victorybiz/geoip-location)
+[![Total Downloads](https://img.shields.io/packagist/dt/victorybiz/geoip-location.svg?style=flat-square)](https://packagist.org/packages/victorybiz/geoip-location)
 
 Get the geographical location of website visitors based on their IP addresses.
 
