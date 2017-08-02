@@ -1,5 +1,5 @@
 # GeoIP Location
-[![Packagist](https://img.shields.io/packagist/v/victorybiz/geoip-location.svg)](https://packagist.org/packages/victorybiz/geoip-location)
+[![GitHub release](https://img.shields.io/github/release/victorybiz/geoip-location.svg)](https://packagist.org/packages/victorybiz/geoip-location)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE.md)
 [![Build Status](https://travis-ci.org/victorybiz/geoip-location.svg?branch=master)](https://travis-ci.org/victorybiz/geoip-location)
 [![Total Downloads](https://img.shields.io/packagist/dt/victorybiz/geoip-location.svg)](https://packagist.org/packages/victorybiz/geoip-location)
