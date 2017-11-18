@@ -82,7 +82,7 @@ class GeoIPLocation
         if (empty($this->geoData['city'])) {
             $this->locate();
         }
-        return $this->this->geoData['city'];
+        return $this->geoData['city'];
     }
 
     public function getRegion()
