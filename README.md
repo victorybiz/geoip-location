@@ -2,6 +2,7 @@
 [![GitHub release](https://img.shields.io/github/release/victorybiz/geoip-location.svg)](https://packagist.org/packages/victorybiz/geoip-location)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/victorybiz/geoip-location.svg?branch=master)](https://travis-ci.org/victorybiz/geoip-location)
+[![Packagist](https://img.shields.io/packagist/dt/victorybiz/geoip-location.svg)](https://packagist.org/packages/victorybiz/geoip-location)
 
 
 Get the geographical location of website visitors based on their IP addresses.  Support Laravel 5 and PHP (Non-Laravel) Project.
