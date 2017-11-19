@@ -79,8 +79,7 @@ You're good to go, explore the package
 ```
 
 ## Web Services
-### geoPlugin
-GeoIP Location wrap around geolocation web service from [geoPlugin](http://www.geoplugin.com/) 
+* **geoPlugin** - GeoIP Location wrap around geolocation web service from [geoPlugin](http://www.geoplugin.com/). Don't hesitate to checkout [Premium geoPlugin access](http://www.geoplugin.com/premium).
 
 ## Bug Reports and Issue tracking 
 
