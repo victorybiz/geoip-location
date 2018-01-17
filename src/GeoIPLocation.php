@@ -53,7 +53,7 @@ class GeoIPLocation
             return $this->ip;
         } else {
             global $_SERVER;
-            $set_localhost_ip_as = '169.159.82.111';
+            $set_localhost_ip_as = '169.159.82.111'; 
 
             $ip = @$_SERVER["REMOTE_ADDR"];
 

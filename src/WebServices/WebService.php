@@ -24,7 +24,7 @@ class WebService
     protected function getDefault()
     {
         return [
-            'ip' => null,
+            'ip' => '0.0.0.0',
             'city' => null,
             'region' => null,
             'regionCode' => null,
