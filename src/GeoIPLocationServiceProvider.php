@@ -23,6 +23,18 @@ class GeoIPLocationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $this->app->bind('geoip-location', function ($app) {
+            return new GeoIPLocation(); // Or new \Victorybiz\GeoIPLocation\GeoIPLocation when no proper namespace
+        });
+    }
+
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return ['geoip-location'];
     }
 }

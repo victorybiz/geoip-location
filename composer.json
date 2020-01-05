@@ -22,5 +22,16 @@
         "psr-4": {
             "Victorybiz\\GeoIPLocation\\": "src"
         }
+    },
+
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Victorybiz\\GeoIPLocation\\GeoIPLocationServiceProvider"
+            ],
+            "aliases": {
+                "GeoIPLocation": "Victorybiz\\GeoIPLocation\\Facades\\GeoIPLocationFacade"
+            }
+        }
     }
 }

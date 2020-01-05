@@ -5,7 +5,7 @@
 [![Packagist](https://img.shields.io/packagist/dt/victorybiz/geoip-location.svg)](https://packagist.org/packages/victorybiz/geoip-location)
 
 
-Get the geographical location of website visitors based on their IP addresses.  Support Laravel 5 and PHP (Non-Laravel) Project.
+Get the geographical location of website visitors based on their IP addresses. Support Laravel and PHP (Non-Laravel) Project.
 
 ## Installation
 Install using composer, from the command line run:
@@ -14,10 +14,12 @@ Install using composer, from the command line run:
 $ composer require victorybiz/geoip-location
 ```
 ### Laravel Project
-Alternatively, you can add `"victorybiz/geoip-location": "~1.0"` to your composer.json file's `require` section and 
-then run `$ composer update`.
+Alternatively, you can add `"victorybiz/geoip-location": "^1.1"` to your composer.json file's `require` section and 
+then you'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
-Once installed you need to register the service provider with the application. Open up `config/app.php` and locate the `providers` key.
+> If you use **Laravel >= 5.5** you can skip this step and go to [**`configuration`**](https://github.com/victorybiz/unified-sms#configuration-laravel)
+
+>  If you use **Laravel < 5.5**, you need to register the service provider with the application. Open up `config/app.php` and locate the `providers` key.
 
 ```php
 'providers' => [
@@ -26,8 +28,23 @@ Once installed you need to register the service provider with the application. O
 
 ]
 ```
+And add the GeoIPLocation alias to config/app.php:
+```php
+'aliases' => [
+
+	'GeoIPLocation' => Victorybiz\GeoIPLocation\Facades\GeoIPLocationFacade::class,
+
+]
+```
+### Usage in Laravel Project
+Please use the `GeoIPLocation` Facade
+```php
+use GeoIPLocation;
+
+echo GeoIPLocation::getIP(); // Return client IP
+```
 ### PHP (Non-Laravel) Project
-Require the autoload file in your php script.
+Require the vendor autoload file in your php script.
 
 ```php
     require_once 'path/to/vendor/autoload.php';
