@@ -17,7 +17,7 @@ $ composer require victorybiz/geoip-location
 Alternatively, you can add `"victorybiz/geoip-location": "^1.1"` to your composer.json file's `require` section and 
 then you'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
-> If you use **Laravel >= 5.5** you can skip this step and go to [**`configuration`**](https://github.com/victorybiz/unified-sms#configuration-laravel)
+> If you use **Laravel >= 5.5** you can skip this step and go to [**`configuration`**](https://github.com/victorybiz/geoip-location#usage-in-laravel-project)
 
 >  If you use **Laravel < 5.5**, you need to register the service provider with the application. Open up `config/app.php` and locate the `providers` key.
 
