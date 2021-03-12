@@ -48,7 +48,7 @@ class GeoIPLocation
     {
         $default_web_service = 'geoplugin';
 
-        switch ($$default_web_service) {
+        switch ($default_web_service) {
             case 'ipinfo':
                 $webService = new IpInfoWebService($this->getIP(), $token);
                 $this->geoData =  $webService->locate();
