@@ -30,7 +30,7 @@ class GeoPluginWebService extends WebService
 					'Accept'     => 'application/json',
 					'Content-Type'     => 'application/json',
 				]
-			);
+			]);
 			$status_code = $response->getStatusCode();
 			if ($status_code == 200) {
 				$response_content = $response->getBody()->getContents();
