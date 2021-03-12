@@ -1,47 +1,75 @@
 <?php
-
 namespace Victorybiz\GeoIPLocation;
 
 use Victorybiz\GeoIPLocation\WebServices\GeoPluginWebService;
+use Victorybiz\GeoIPLocation\WebServices\IpInfoWebService;
 
 class GeoIPLocation
 {   
+    protected $ipLocated = false;
+
     protected $ip = null;
+
     protected $geoData = [
-            'ip' => null,
-            'city' => null,
-            'region' => null,
-            'regionCode' => null,
-            'country' => null,
-            'countryCode' => null,
-            'continent' => null,
-            'continentCode' => null,
-            'postalCode' => null,
-            'latitude' => null,
-            'longitude' => null,
-            'timezone' => null,
-            'currencyCode' => null,
-            'currencySymbol' => null,
-            'currencyExchangeRate' => null,
-        ];
+        'ip' => null,
+        'city' => null,
+        'region' => null,
+        'regionCode' => null,
+        'country' => null,
+        'countryCode' => null,
+        'continent' => null,
+        'continentCode' => null,
+        'postalCode' => null,
+        'latitude' => null,
+        'longitude' => null,
+        'timezone' => null,
+        'currencyCode' => null,
+        'currencySymbol' => null,
+        'currencyExchangeRate' => null,
+    ];
+
+    protected $invalidIps = [
+        '192.168.65.0', '::1', '127.0.0.1'
+    ];
+
+    protected $localhostIp = '169.159.82.111';
+
+    protected $currency = 'NGN';
    
-    public function __construct()
+    public function __construct($ip = null, $currency = null)
     {
-        $this->locate();
+        $this->ip = $ip;
+        if ($currency) {
+            $this->defaultCurrency =  $currency;
+        }     
     }
 
     protected function locate() 
     {
-        $ip = $this->getIP();
-        $web_service = new GeoPluginWebService();
-        $this->geoData =  $web_service->locate($ip);
+        $default_web_service = 'geoplugin';
+
+        switch ($$default_web_service) {
+            case 'ipinfo':
+                $webService = new IpInfoWebService($this->getIP(), $token);
+                $this->geoData =  $webService->locate();
+                break;    
+            case 'geoplugin':
+                $webService = new GeoPluginWebService($this->getIP(), $this->currency);
+                $this->geoData =  $webService->locate();
+                break;         
+            default:
+                $webService = new GeoPluginWebService($this->getIP(), $this->currency);
+                $this->geoData =  $webService->locate();
+                break;
+        }       
+        $this->ipLocated = true;
     }
 
     public function setIP($ip)
     {
         if (! filter_var(@$_SERVER['HTTP_CF_CONNECTING_IP'], FILTER_VALIDATE_IP)) {
             $this->ip = $ip;
-            $this->locate();
+            $this->ipLocated = false;
         } else {
             //throw new Exception("Invalid IP");
         }
@@ -53,7 +81,6 @@ class GeoIPLocation
             return $this->ip;
         } else {
             global $_SERVER;
-            $set_localhost_ip_as = '169.159.82.111'; 
 
             $ip = @$_SERVER["REMOTE_ADDR"];
 
@@ -68,18 +95,17 @@ class GeoIPLocation
                 $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
             }           
     
-            if ($ip == "::1" || $ip == "127.0.0.1") {
-                $ip = $set_localhost_ip_as; 
+            if (in_array($ip, $this->localhostIp)) {
+                $ip = $this->localhostIp; 
             }
-            $ip = trim($ip);
-            $this->ip = $ip;
+            $this->ip = trim($ip);
             return $ip;
         }
 	}    
 
     public function getCity()
     {
-        if (empty($this->geoData['city'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['city'];
@@ -87,7 +113,7 @@ class GeoIPLocation
 
     public function getRegion()
     {
-        if (empty($this->geoData['region'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['region'];
@@ -95,7 +121,7 @@ class GeoIPLocation
 
     public function getRegionCode()
     {
-        if (empty($this->geoData['regionCode'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['regionCode'];
@@ -103,7 +129,7 @@ class GeoIPLocation
 
     public function getCountry()
     {
-        if (empty($this->geoData['country'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['country'];
@@ -111,7 +137,7 @@ class GeoIPLocation
 
     public function getCountryCode()
     {
-        if (empty($this->geoData['countryCode'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['countryCode'];
@@ -119,7 +145,7 @@ class GeoIPLocation
 
     public function getContinent()
     {
-        if (empty($this->geoData['continent'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['continent'];
@@ -127,7 +153,7 @@ class GeoIPLocation
 
     public function getContinentCode()
     {
-        if (empty($this->geoData['continentCode'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['continentCode'];
@@ -135,7 +161,7 @@ class GeoIPLocation
 
     public function getPostalCode()
     {
-        if (empty($this->geoData['postalCode'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['postalCode'];
@@ -143,7 +169,7 @@ class GeoIPLocation
 
     public function getLatitude()
     {
-        if (empty($this->geoData['latitude'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['latitude'];
@@ -151,7 +177,7 @@ class GeoIPLocation
 
     public function getLongitude()
     {
-        if (empty($this->geoData['longitude'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['longitude'];
@@ -159,7 +185,7 @@ class GeoIPLocation
 
     public function getCurrencyCode()
     {
-        if (empty($this->geoData['currencyCode'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['currencyCode'];
@@ -167,7 +193,7 @@ class GeoIPLocation
 
     public function getCurrencySymbol()
     {
-        if (empty($this->geoData['currencySymbol'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['currencySymbol'];
@@ -175,7 +201,7 @@ class GeoIPLocation
 
     public function getCurrencyExchangeRate()
     {
-        if (empty($this->geoData['currencyExchangeRate'])) {
+        if (!$this->ipLocated) {
             $this->locate();
         }
         return $this->geoData['currencyExchangeRate'];
@@ -183,7 +209,9 @@ class GeoIPLocation
     
     public function getLocation()
     {   
-        $this->locate();
+        if (!$this->ipLocated) {
+            $this->locate();
+        }
         //Location string
         $location       = '';
         $city           = $this->geoData['city'];

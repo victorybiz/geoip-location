@@ -1,17 +1,21 @@
 <?php
-
 namespace Victorybiz\GeoIPLocation\WebServices;
 
 use GuzzleHttp\Client;
 
 class WebService
 {
-
-
     protected $guzzleClient;
 
-    public function __construct()
+    protected $connectTimeout = 5;
+
+    protected $ip = null;
+
+	protected $currency = null;
+
+    public function __construct($ip, $currency = null)
     {
+        $this->ip = $ip;
         $this->guzzleClient = new Client();
     }
 
@@ -24,7 +28,7 @@ class WebService
     protected function getDefault()
     {
         return [
-            'ip' => '0.0.0.0',
+            'ip' => $this->ip,
             'city' => null,
             'region' => null,
             'regionCode' => null,

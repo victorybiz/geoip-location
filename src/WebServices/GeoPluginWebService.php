@@ -1,31 +1,36 @@
 <?php
-
 namespace Victorybiz\GeoIPLocation\WebServices;
 
 class GeoPluginWebService extends WebService
 {		
-	// the default base currency
-	protected $currency = 'NGN';
+	protected $apiUrl = 'http://www.geoplugin.net/php.gp?ip={IP}&base_currency={CURRENCY}';
     
     /**
      * Class Constructor
      * 
      * @return void
      */
-    public function __construct()
+    public function __construct($ip, $currency)
     {
-        parent::__construct();
+        parent::__construct($ip, $currency);
     }    
 
-    public function locate($ip) 
+    public function locate() 
     {
-        $host_url = 'http://www.geoplugin.net/php.gp?ip={IP}&base_currency={CURRENCY}';
-        $host_url = str_replace( '{IP}', $ip, $host_url );
-		$host_url = str_replace( '{CURRENCY}', $this->currency, $host_url );
+        $ip_api_url = $this->apiUrl;
+        $ip_api_url = str_replace( '{IP}', $this->ip, $ip_api_url );
+		$ip_api_url = str_replace( '{CURRENCY}', $this->currency, $ip_api_url );
 		
 		try {
 			$client = $this->guzzleClient; // Guzzle HTTP Client
-			$response = $client->request('GET', $host_url);
+			$response = $client->request('GET', $ip_api_url, [
+				'connect_timeout' => $this->connectTimeout,
+				'timeout' => $this->connectTimeout,
+				'headers' => [
+					'Accept'     => 'application/json',
+					'Content-Type'     => 'application/json',
+				]
+			);
 			$status_code = $response->getStatusCode();
 			if ($status_code == 200) {
 				$response_content = $response->getBody()->getContents();
@@ -43,7 +48,7 @@ class GeoPluginWebService extends WebService
 				$continent_name = (isset($continents[strtoupper($data['geoplugin_continentCode'])])) ? $continents[strtoupper($data['geoplugin_continentCode'])] : null;
 			   
 				$geo_data = [
-					'ip' => $ip,
+					'ip' => $this->ip,
 					'city' => (isset($data['geoplugin_city'])) ? $data['geoplugin_city'] : null,
 					'region' => (isset($data['geoplugin_region'])) ? $data['geoplugin_region'] : null,
 					'regionCode' => (isset($data['geoplugin_region'])) ? $data['geoplugin_region'] : null,
