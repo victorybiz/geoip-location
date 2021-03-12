@@ -95,7 +95,7 @@ class GeoIPLocation
                 $ip = $_SERVER['HTTP_CF_CONNECTING_IP'];
             }           
     
-            if (in_array($ip, $this->localhostIp)) {
+            if (in_array($ip, $this->invalidIps)) {
                 $ip = $this->localhostIp; 
             }
             $this->ip = trim($ip);

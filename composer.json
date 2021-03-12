@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=7.2",
-        "guzzlehttp/guzzle": "^7.0",
+        "guzzlehttp/guzzle": "^6.0 || ^7.0",
         "ipinfo/ipinfo": "2.1.x-dev"
     }, 
     "require-dev": {
