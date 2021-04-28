@@ -50,15 +50,29 @@ Require the vendor autoload file in your php script.
     require_once 'path/to/vendor/autoload.php';
 ```
 ## Usage 
- localhost IP `127.0.0.1` and `::1` will return `169.159.82.111` to assert a valid geo response.
+ Localhost IP `127.0.0.1`, `192.168.65.0` and `::1` will return `169.159.82.111` to assert a valid geo response.
 ```php
     use Victorybiz\GeoIPLocation\GeoIPLocation;
 
     $geoip = new GeoIPLocation(); 
+
+    // OR
+
+    $geoip = new GeoIPLocation([
+        'ip' = null, // Set IP.  Default is NULL, will be auto set by the package
+        'baseCurrency' = 'USD', // Set base currency for exchange rate. Default is USD
+    ]);
 ```
 Alternatively
 ```php
     $geoip = new \Victorybiz\GeoIPLocation\GeoIPLocation();
+
+    // OR
+
+    $geoip = new \Victorybiz\GeoIPLocation\GeoIPLocation([
+        'ip' = null, // Set IP.  Default is NULL, will be auto set by the package
+        'baseCurrency' = 'USD', // Set base currency for exchange rate. Default is USD
+    ]);
 ```
 You're good to go, explore the package
 ```php

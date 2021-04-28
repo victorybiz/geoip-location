@@ -5,25 +5,25 @@ use ipinfo\ipinfo\IPinfo;
 
 class IpInfoWebService extends WebService
 {		
-    protected $apiUrl = 'https://ipinfo.io?token={TOKEN}';
+  protected $apiUrl = 'https://ipinfo.io?token={TOKEN}';
 
-	protected $token = null
+	protected $token = null;
     
     /**
      * Class Constructor
      * 
      * @return void
      */
-    public function __construct($ip, $token)
+    public function __construct($ip, $config)
     {
         parent::__construct($ip);
-		$this->token = $token;
+				$this->config = $config;
     }     
 
     public function locate() 
     {
 		try {
-			$client = new IPinfo($this->token, [
+			$client = new IPinfo($this->config['token'], [
 				'timeout' => $this->connectTimeout,
 			]);
 			$details = $client->getDetails($this->ip);

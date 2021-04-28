@@ -9,13 +9,14 @@ class WebService
 
     protected $connectTimeout = 5;
 
+    protected $config = null;
+
     protected $ip = null;
 
-	protected $currency = null;
-
-    public function __construct($ip, $currency = null)
+    public function __construct($ip, $config)
     {
         $this->ip = $ip;
+        $this->config = $config;
         $this->guzzleClient = new Client();
     }
 

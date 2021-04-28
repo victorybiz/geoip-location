@@ -10,16 +10,16 @@ class GeoPluginWebService extends WebService
      * 
      * @return void
      */
-    public function __construct($ip, $currency)
+    public function __construct($ip, $config)
     {
-        parent::__construct($ip, $currency);
+        parent::__construct($ip, $config);
     }    
 
     public function locate() 
     {
         $ip_api_url = $this->apiUrl;
         $ip_api_url = str_replace( '{IP}', $this->ip, $ip_api_url );
-		$ip_api_url = str_replace( '{CURRENCY}', $this->currency, $ip_api_url );
+				$ip_api_url = str_replace( '{CURRENCY}', $this->config['baseCurrency'], $ip_api_url );
 		
 		try {
 			$client = $this->guzzleClient; // Guzzle HTTP Client

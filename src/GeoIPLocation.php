@@ -6,6 +6,8 @@ use Victorybiz\GeoIPLocation\WebServices\IpInfoWebService;
 
 class GeoIPLocation
 {   
+    protected $config = null;
+
     protected $ipLocated = false;
 
     protected $ip = null;
@@ -29,19 +31,27 @@ class GeoIPLocation
     ];
 
     protected $invalidIps = [
-        '192.168.65.0', '::1', '127.0.0.1'
+        '::1', '127.0.0.1', '192.168.65.0'
     ];
 
     protected $localhostIp = '169.159.82.111';
 
-    protected $currency = 'NGN';
+    protected $baseCurrency = 'USD';
    
-    public function __construct($ip = null, $currency = null)
+    public function __construct($config = [])
     {
-        $this->ip = $ip;
-        if ($currency) {
-            $this->defaultCurrency =  $currency;
-        }     
+
+        if (isset($config['ip'])) {
+            $this->ip = $config['ip'];
+        }
+        
+        if (isset($config['baseCurrency'])) {
+            $this->baseCurrency =  $config['baseCurrency'];
+        } else {
+            $config['baseCurrency'] = $this->baseCurrency;
+        }
+
+        $this->config = $config;
     }
 
     protected function locate() 
@@ -50,15 +60,16 @@ class GeoIPLocation
 
         switch ($default_web_service) {
             case 'ipinfo':
-                $webService = new IpInfoWebService($this->getIP(), $token);
+                $token =  null;
+                $webService = new IpInfoWebService($this->getIP(), $this->config);
                 $this->geoData =  $webService->locate();
                 break;    
             case 'geoplugin':
-                $webService = new GeoPluginWebService($this->getIP(), $this->currency);
+                $webService = new GeoPluginWebService($this->getIP(), $this->config);
                 $this->geoData =  $webService->locate();
                 break;         
             default:
-                $webService = new GeoPluginWebService($this->getIP(), $this->currency);
+                $webService = new GeoPluginWebService($this->getIP(), $this->config);
                 $this->geoData =  $webService->locate();
                 break;
         }       
