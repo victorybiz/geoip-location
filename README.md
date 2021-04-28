@@ -59,8 +59,8 @@ Require the vendor autoload file in your php script.
     // OR
 
     $geoip = new GeoIPLocation([
-        'ip' = null, // Set IP.  Default is NULL, will be auto set by the package
-        'baseCurrency' = 'USD', // Set base currency for exchange rate. Default is USD
+        'ip' => null, // Set IP.  Default is NULL, will be auto set by the package
+        'baseCurrency' => 'USD', // Set base currency for exchange rate. Default is USD
     ]);
 ```
 Alternatively
@@ -70,8 +70,8 @@ Alternatively
     // OR
 
     $geoip = new \Victorybiz\GeoIPLocation\GeoIPLocation([
-        'ip' = null, // Set IP.  Default is NULL, will be auto set by the package
-        'baseCurrency' = 'USD', // Set base currency for exchange rate. Default is USD
+        'ip' => null, // Set IP.  Default is NULL, will be auto set by the package
+        'baseCurrency' => 'USD', // Set base currency for exchange rate. Default is USD
     ]);
 ```
 You're good to go, explore the package
