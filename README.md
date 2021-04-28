@@ -50,7 +50,7 @@ Require the vendor autoload file in your php script.
     require_once 'path/to/vendor/autoload.php';
 ```
 ## Usage 
- Localhost IP `127.0.0.1`, `192.168.65.0` and `::1` will return `169.159.82.111` to assert a valid geo response.
+ Localhost IP `127.0.0.1`, `192.168.65.0`, `172.18.0.1` and `::1` will return `169.159.82.111` to assert a valid geo response.
 ```php
     use Victorybiz\GeoIPLocation\GeoIPLocation;
 

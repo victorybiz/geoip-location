@@ -31,7 +31,10 @@ class GeoIPLocation
     ];
 
     protected $invalidIps = [
-        '::1', '127.0.0.1', '192.168.65.0'
+        '::1', 
+        '127.0.0.1',
+        '192.168.65.0',
+        '172.18.0.1',
     ];
 
     protected $localhostIp = '169.159.82.111';
