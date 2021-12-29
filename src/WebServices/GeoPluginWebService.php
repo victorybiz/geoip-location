@@ -45,7 +45,12 @@ class GeoPluginWebService extends WebService
 					"NA" => "North America",
 					"SA" => "South America"
 				];
-				$continent_name = (isset($continents[strtoupper($data['geoplugin_continentCode'])])) ? $continents[strtoupper($data['geoplugin_continentCode'])] : null;
+
+				if (isset($data['geoplugin_continentCode']) && !empty($data['geoplugin_continentCode'])) {
+					$continent_name = (isset($continents[strtoupper($data['geoplugin_continentCode'])])) ? $continents[strtoupper($data['geoplugin_continentCode'])] : null;
+				} else {
+					$continent_name = null;
+				}
 			   
 				$geo_data = [
 					'ip' => $this->ip,
